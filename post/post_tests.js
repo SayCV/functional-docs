@@ -48,7 +48,7 @@ exports.checkMissingImage = function(filename, $, options, callback) {
                     refFileName = remappedRef;
                 }
                 
-                if (!path.existsSync(refDirName + "/" + refFileName)) {
+                if (!fs.existsSync(refDirName + "/" + refFileName)) {
                     errors.push(printMessage(filename,  "image " + src + " does not exist"));
                 }
                 else {
@@ -182,12 +182,12 @@ function fileCheck(options, href, file, filepath, noHash, errors)
         refFileName = remappedRef;
     }
     
-    if (!path.existsSync(refDirName)) {
+    if (!fs.existsSync(refDirName)) {
         errors.push(printMessage(file, " trying to link to " + refDirName + ", which isn't a directory"));
         return false;
     }
 
-    if (!path.existsSync(refDirName + "/" + refFileName)) {   
+    if (!fs.existsSync(refDirName + "/" + refFileName)) {   
         errors.push(printMessage(file, " trying to incorrectly link to " + href + " as " + filepath));
         return false;
     }
